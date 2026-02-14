@@ -113,7 +113,7 @@
     <div class="gallery-exhibition">
       <div class="gallery-header">
         <h2 class="gallery-title">Fotoğraflarımız</h2>
-        <span class="gallery-counter" id="gallery-counter">1 / 9</span>
+        <span class="gallery-counter" id="gallery-counter">1 / 8</span>
       </div>
       <p class="gallery-hint" id="gallery-hint">Aşağı kaydır</p>
       <div class="gallery-slide">
@@ -156,94 +156,72 @@
           <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.35.49%20%281%29.jpeg" alt="Ebrar">
         </div>
       </div>
-      <div class="gallery-slide">
-        <div class="gallery-frame">
-          <img src="assets/img/WhatsApp%20Image%202026-02-14%20at%2014.44.29.jpeg" alt="Balon">
-        </div>
-      </div>
     </div>
 
-    <!-- 4. WHATSAPP KONUŞMALARI - Ekrandaki konuşmanın aynısı -->
+    <!-- 4. WHATSAPP KONUŞMALARI - Üsttekiyle aynı stil ve animasyon -->
     <section id="chat-scene" class="section" data-section="chat-scene">
       <h2 class="chat-section-title">Konuşmalarımız</h2>
       <p class="chat-section-subtitle">Bizim sözlerimiz</p>
-      <div class="chat-wa-sim">
-        <div class="chat-wa-bg" style="background-image: url('assets/img/WhatsApp%20Image%202026-02-14%20at%2014.44.29.jpeg')"></div>
-        <div class="chat-wa-header">
-          <span class="chat-wa-back">‹</span>
-          <div class="chat-wa-contact">
-            <div class="chat-wa-avatar"></div>
-            <span class="chat-wa-name">ebrar</span>
-          </div>
-          <div class="chat-wa-actions">
-            <span class="chat-wa-icon">📹</span>
-            <span class="chat-wa-icon">📞</span>
-          </div>
-        </div>
-        <div class="chat-wa-messages">
-          <div class="wa-typing chat-wa-typing" id="chat-wa-typing"><span></span><span></span><span></span></div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="1">
-            <span class="wa-bubble">hshxhssjjs</span>
-            <span class="wa-time">02:36</span>
-          </div>
-          <div class="wa-msg wa-msg-right wa-text" data-msg="2">
-            <span class="wa-bubble">de bakalım</span>
-            <span class="wa-time">02:36</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="3">
-            <span class="wa-bubble">göz kuruluğu diyorsun</span>
-            <span class="wa-time">02:36</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="4">
-            <span class="wa-bubble">bir şey dicem</span>
-            <span class="wa-time">02:36</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="5">
-            <span class="wa-bubble">bu da sana benden günün tavsiyesi olsun</span>
-            <span class="wa-time">02:36</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="6">
-            <span class="wa-bubble">her zaman sevilmek istediğin gibi sev</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-right wa-text" data-msg="7">
-            <span class="wa-bubble">ne geliyor merak ettim</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="8">
-            <span class="wa-bubble">her zaman karşılığını almasan da</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="9">
-            <span class="wa-bubble">çünkü bence</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="10">
-            <span class="wa-bubble">iyi seviyorsun</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-left wa-text" data-msg="11">
-            <span class="wa-bubble">dur</span>
-            <span class="wa-time">02:37</span>
-          </div>
-          <div class="wa-msg wa-msg-right wa-text" data-msg="12">
-            <span class="wa-bubble">ben varya</span>
-            <span class="wa-time">02:38</span>
-          </div>
-          <div class="wa-msg wa-msg-right wa-text" data-msg="13">
-            <span class="wa-bubble">inanılmaz seviyorum sevdim mi</span>
-            <span class="wa-time">02:38</span>
-          </div>
-          <div class="wa-msg wa-msg-right wa-text" data-msg="14">
-            <span class="wa-bubble">aklım gidiyor</span>
-            <span class="wa-time">02:38</span>
-          </div>
-        </div>
-        <div class="chat-wa-input">
-          <span class="chat-wa-input-plus">+</span>
-          <div class="chat-wa-input-field">
-            <span class="chat-wa-input-placeholder">Mesaj</span>
-            <span class="chat-wa-input-icons">😊 📷 🎤</span>
+      <div class="chat-flow">
+        <div class="wa-chat-sim" id="chat-wa-sim">
+          <div class="wa-chat-inner">
+            <div class="wa-typing" id="chat-wa-typing"><span></span><span></span><span></span></div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="1">
+              <span class="wa-bubble">hshxhssjjs</span>
+              <span class="wa-time">02:36</span>
+            </div>
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="2">
+              <span class="wa-bubble">de bakalım</span>
+              <span class="wa-time">02:36</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="3">
+              <span class="wa-bubble">göz kuruluğu diyorsun</span>
+              <span class="wa-time">02:36</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="4">
+              <span class="wa-bubble">bir şey dicem</span>
+              <span class="wa-time">02:36</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="5">
+              <span class="wa-bubble">bu da sana benden günün tavsiyesi olsun</span>
+              <span class="wa-time">02:36</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="6">
+              <span class="wa-bubble">her zaman sevilmek istediğin gibi sev</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="7">
+              <span class="wa-bubble">ne geliyor merak ettim</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="8">
+              <span class="wa-bubble">her zaman karşılığını almasan da</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="9">
+              <span class="wa-bubble">çünkü bence</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="10">
+              <span class="wa-bubble">iyi seviyorsun</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="11">
+              <span class="wa-bubble">dur</span>
+              <span class="wa-time">02:37</span>
+            </div>
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="12">
+              <span class="wa-bubble">ben varya</span>
+              <span class="wa-time">02:38</span>
+            </div>
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="13">
+              <span class="wa-bubble">inanılmaz seviyorum sevdim mi</span>
+              <span class="wa-time">02:38</span>
+            </div>
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="14">
+              <span class="wa-bubble">aklım gidiyor</span>
+              <span class="wa-time">02:38</span>
+            </div>
           </div>
         </div>
       </div>

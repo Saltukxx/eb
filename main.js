@@ -101,7 +101,7 @@
 
   function updateChat() {
     const section = document.getElementById('chat-scene');
-    const chatSim = section?.querySelector('.chat-wa-sim');
+    const chatSim = section?.querySelector('.wa-chat-sim');
     const typing = section?.querySelector('.wa-typing');
     const messages = section?.querySelectorAll('.wa-msg');
     if (!section || !chatSim || !messages.length) return;
@@ -111,15 +111,15 @@
 
     if (inView && !chatSequenceStarted) {
       chatSequenceStarted = true;
-      const delayPerMsg = 1600;
-      const initialDelay = 1000;
-      const messagesEl = section.querySelector('.chat-wa-messages');
+      const delayPerMsg = 2400;
+      const initialDelay = 1800;
+      const scrollEl = chatSim;
 
       messages.forEach((msg, i) => {
         setTimeout(() => {
           if (typing && i === 0) typing.classList.add('hidden');
           msg.classList.add('visible');
-          if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+          if (scrollEl) scrollEl.scrollTop = scrollEl.scrollHeight;
         }, initialDelay + i * delayPerMsg);
       });
     }
