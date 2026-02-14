@@ -679,6 +679,12 @@ button {
 #chat-scene .wa-chat-sim {
   max-height: 70vh;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#chat-scene .wa-chat-sim::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-section-title {
@@ -1270,13 +1276,30 @@ button {
 
 .modal-content {
   position: relative;
-  max-width: 400px;
-  padding: 3rem;
+  max-width: 420px;
+  max-height: 85vh;
+  padding: 2rem 2.5rem;
   background: rgba(26, 26, 46, 0.95);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   animation: modalIn 0.5s ease;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-text {
+  text-align: left;
+}
+
+.modal-text p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 @keyframes modalIn {
