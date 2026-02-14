@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ebrar, Bu Bizim Hikâyemiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero video arka plan -->
+  <div class="media-loading" id="video-loading" aria-hidden="true">
+    <span class="media-loading-spinner"></span>
+    <span class="media-loading-text">Yükleniyor…</span>
+  </div>
+  <video id="hero-video" class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/img/WhatsApp%20Video%202026-02-13%20at%2023.33.42.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay" aria-hidden="true"></div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="floating-hearts" id="floating-hearts" aria-hidden="true"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="Canozan%20-%20kalbimden%20tenime.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+    <!-- 1. BALON BÖLÜMÜ -->
+    <section id="hero" class="section section-balloon" data-section="hero">
+      <div class="balloon-content">
+        <p class="balloon-text">Her şey, bütün sevgimi, umutlarımı, hislerimi içine sığdırdığım küçük bir balonla başladı.</p>
+        <img class="balloon-img" src="assets/img/WhatsApp%20Image%202026-02-14%20at%2014.44.29.jpeg" alt="Balon anısı">
+      </div>
+    </section>
+
+    <!-- 2. MÜZİK AÇ - WhatsApp simülasyonu -->
+    <section id="music-section" class="section section-music" data-section="music">
+      <div class="music-flow">
+        <div class="wa-chat-sim" id="wa-chat-sim">
+          <div class="wa-chat-inner">
+            <div class="wa-typing" id="wa-typing"><span></span><span></span><span></span></div>
+            <!-- 1. ebrar (yeşil, sağ): link -->
+            <div class="wa-msg wa-msg-right wa-link-url-only" data-wa-msg="1">
+              <span class="wa-bubble">https://music.youtube.com/watch?v=BCQ23kQS2ig&si=tSd8LY-JA5BoHaB06</span>
+              <span class="wa-time">21:17</span>
+            </div>
+            <!-- 2. ebrar (yeşil, sağ) -->
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="2">
+              <span class="wa-bubble">dinlediğin de aklına ben geleyim</span>
+              <span class="wa-time">21:18</span>
+            </div>
+            <!-- 3. gri sol: olur -->
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="3">
+              <span class="wa-bubble">olur..</span>
+              <span class="wa-time">21:28</span>
+            </div>
+            <!-- 4. gri sol: Helal kartı -->
+            <div class="wa-msg wa-msg-left wa-link-preview" data-wa-msg="4">
+              <div class="wa-link-thumb wa-link-thumb-helal" style="background-image: url('assets/img/WhatsApp%20Image%202026-02-14%20at%2000.02.14.jpeg')"></div>
+              <div class="wa-link-body">
+                <div class="wa-link-title">Helal - YouTube Music</div>
+                <div class="wa-link-desc">Provided to YouTube by SONY MUSIC TURKEY Helal . Cem...</div>
+                <div class="wa-link-url">music.youtube.com</div>
+              </div>
+              <span class="wa-time">21:29</span>
+            </div>
+            <!-- 5. gri sol -->
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="5">
+              <span class="wa-bubble">hayat aldığı gibi geri verir mi bize bir daha gülümseyebilir mi?</span>
+              <span class="wa-time">21:29</span>
+            </div>
+            <!-- 6. gri sol: kalbimden tenime kartı -->
+            <div class="wa-msg wa-msg-left wa-link-preview" data-wa-msg="6">
+              <div class="wa-link-thumb wa-link-thumb-kalbimden" style="background-image: url('assets/img/WhatsApp%20Image%202026-02-14%20at%2000.06.17.jpeg')"></div>
+              <div class="wa-link-body">
+                <div class="wa-link-title">kalbimden tenime - YouTube Music</div>
+                <div class="wa-link-desc">Provided to YouTube by The...</div>
+                <div class="wa-link-url">music.youtube.com</div>
+              </div>
+              <span class="wa-time">21:29</span>
+            </div>
+            <!-- 7. gri sol -->
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="7">
+              <span class="wa-bubble">bunları da sen dinlersen</span>
+              <span class="wa-time">21:29</span>
+            </div>
+            <!-- 8. gri sol -->
+            <div class="wa-msg wa-msg-left wa-text" data-wa-msg="8">
+              <span class="wa-bubble">aklına biz gelelim</span>
+              <span class="wa-time">21:30</span>
+            </div>
+            <!-- 9. yeşil sağ: balon -->
+            <div class="wa-msg wa-msg-right wa-text" data-wa-msg="9">
+              <span class="wa-bubble">🎈</span>
+              <span class="wa-time">21:45</span>
+            </div>
+          </div>
+        </div>
+        <div class="music-final" id="music-final">
+          <p class="music-final-text">aklına biz gelelim</p>
+          <button class="music-open-btn" id="music-open-btn" aria-label="Müziği aç">
+            <span class="music-open-icon">♪</span>
+            <span class="music-open-label">Müziği Aç</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FOTOĞRAF SERGİSİ - Glassmorphism, video arkada -->
+    <div class="gallery-exhibition">
+      <div class="gallery-header">
+        <h2 class="gallery-title">Fotoğraflarımız</h2>
+        <span class="gallery-counter" id="gallery-counter">1 / 9</span>
+      </div>
+      <p class="gallery-hint" id="gallery-hint">Aşağı kaydır</p>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/image.png" alt="Anılarımız">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.14.jpeg" alt="Birlikte">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.18.jpeg" alt="Anılar">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.22.jpeg" alt="Biz">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.24.jpeg" alt="Seninle">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.26.jpeg" alt="Anılarımız">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.34.32.jpeg" alt="Birlikte">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-13%20at%2023.35.49%20%281%29.jpeg" alt="Ebrar">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-frame">
+          <img src="assets/img/WhatsApp%20Image%202026-02-14%20at%2014.44.29.jpeg" alt="Balon">
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. WHATSAPP KONUŞMALARI - Ekrandaki konuşmanın aynısı -->
+    <section id="chat-scene" class="section" data-section="chat-scene">
+      <h2 class="chat-section-title">Konuşmalarımız</h2>
+      <p class="chat-section-subtitle">Bizim sözlerimiz</p>
+      <div class="chat-wa-sim">
+        <div class="chat-wa-bg" style="background-image: url('assets/img/WhatsApp%20Image%202026-02-14%20at%2014.44.29.jpeg')"></div>
+        <div class="chat-wa-header">
+          <span class="chat-wa-back">‹</span>
+          <div class="chat-wa-contact">
+            <div class="chat-wa-avatar"></div>
+            <span class="chat-wa-name">ebrar</span>
+          </div>
+          <div class="chat-wa-actions">
+            <span class="chat-wa-icon">📹</span>
+            <span class="chat-wa-icon">📞</span>
+          </div>
+        </div>
+        <div class="chat-wa-messages">
+          <div class="wa-typing chat-wa-typing" id="chat-wa-typing"><span></span><span></span><span></span></div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="1">
+            <span class="wa-bubble">hshxhssjjs</span>
+            <span class="wa-time">02:36</span>
+          </div>
+          <div class="wa-msg wa-msg-right wa-text" data-msg="2">
+            <span class="wa-bubble">de bakalım</span>
+            <span class="wa-time">02:36</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="3">
+            <span class="wa-bubble">göz kuruluğu diyorsun</span>
+            <span class="wa-time">02:36</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="4">
+            <span class="wa-bubble">bir şey dicem</span>
+            <span class="wa-time">02:36</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="5">
+            <span class="wa-bubble">bu da sana benden günün tavsiyesi olsun</span>
+            <span class="wa-time">02:36</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="6">
+            <span class="wa-bubble">her zaman sevilmek istediğin gibi sev</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-right wa-text" data-msg="7">
+            <span class="wa-bubble">ne geliyor merak ettim</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="8">
+            <span class="wa-bubble">her zaman karşılığını almasan da</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="9">
+            <span class="wa-bubble">çünkü bence</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="10">
+            <span class="wa-bubble">iyi seviyorsun</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-left wa-text" data-msg="11">
+            <span class="wa-bubble">dur</span>
+            <span class="wa-time">02:37</span>
+          </div>
+          <div class="wa-msg wa-msg-right wa-text" data-msg="12">
+            <span class="wa-bubble">ben varya</span>
+            <span class="wa-time">02:38</span>
+          </div>
+          <div class="wa-msg wa-msg-right wa-text" data-msg="13">
+            <span class="wa-bubble">inanılmaz seviyorum sevdim mi</span>
+            <span class="wa-time">02:38</span>
+          </div>
+          <div class="wa-msg wa-msg-right wa-text" data-msg="14">
+            <span class="wa-bubble">aklım gidiyor</span>
+            <span class="wa-time">02:38</span>
+          </div>
+        </div>
+        <div class="chat-wa-input">
+          <span class="chat-wa-input-plus">+</span>
+          <div class="chat-wa-input-field">
+            <span class="chat-wa-input-placeholder">Mesaj</span>
+            <span class="chat-wa-input-icons">😊 📷 🎤</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MEKTUP FİNALİ -->
+    <section id="letter-finale" class="section" data-section="letter-finale">
+      <div class="letter-container">
+        <p class="letter-hint" id="letter-hint">Mektubu açmak için tıkla</p>
+        <div class="letter-surface">
+          <button class="envelope-wrapper" id="envelope-btn" aria-label="Mektubu aç">
+            <div class="envelope">
+              <div class="envelope-back"></div>
+              <div class="envelope-body"></div>
+              <div class="envelope-flap"></div>
+              <div class="envelope-letter-peek"></div>
+            </div>
+          </button>
+        </div>
+        <div class="letter">
+          <div class="letter-fold"></div>
+          <div class="letter-paper">
+            <div class="letter-content">
+              <p class="letter-line" data-line="1">Her şey değişebilir…</p>
+              <p class="letter-line" data-line="2">İnsanlar, şehirler, mevsimler, duygular.</p>
+              <p class="letter-line" data-line="3">Ama bir şey değişmez. Seninle kalma isteğim…</p>
+              <p class="letter-line" data-line="4">Yorulsam da, kırılıp susmak zorunda kalsam da, bazen yollarımız karışsa da ben oradayım.</p>
+              <p class="letter-line" data-line="5">Bir adım geride, bir nefes ötede.</p>
+              <p class="letter-line" data-line="6">Yanında olmayı hep seçeceğim. Sonsuza kadar…</p>
+              <p class="letter-line" data-line="7">Sadece güzel günlerinde değil, sessizliğin içinde boğulduğunda da.</p>
+              <p class="letter-line" data-line="8">Konuşamadığında seni anlayan, düştüğünde kaldırmayan ama elini tutan olmayı.</p>
+              <p class="letter-line" data-line="9">Sonsuza dek derken abartmıyorum.</p>
+              <p class="letter-line" data-line="10">Sessiz, sabırlı, koşulsuz…</p>
+              <p class="letter-line" data-line="11">Ne olursa olsun, hangi fırtına koparsa kopsun, ben hep senin tarafında olacağım.</p>
+              <p class="letter-line letter-final" data-line="12">Seni seviyorum, hep. Saltuk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. KAPANIŞ -->
+    <section id="closing" class="section" data-section="closing">
+      <button class="heart-btn" id="heart-btn" aria-label="Sürpriz">
+        <span class="heart-icon">♥</span>
+      </button>
+      <div class="surprise-modal" id="surprise-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+          <h2 id="modal-title">Birlikte nice anıya.</h2>
+          <p>Sana bir şey söylemek istiyorum…</p>
+          <p class="modal-love">Seni çok seviyorum, Ebrar.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
