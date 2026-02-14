@@ -111,8 +111,8 @@
 
     if (inView && !chatSequenceStarted) {
       chatSequenceStarted = true;
-      const delayPerMsg = 2400;
-      const initialDelay = 1800;
+      const delayPerMsg = 600;
+      const initialDelay = 800;
       const scrollEl = chatSim;
 
       messages.forEach((msg, i) => {
@@ -237,21 +237,82 @@
     updateCounter();
   }
 
-  /* ===== MODAL ===== */
+  /* ===== MODAL - Daktilo efekti ===== */
+  const modalParagraphs = [
+    { text: "Seni çok seviyorum. Hep diyorum, Allah'tan seni diledim o da bana nasip etti. Beraber girdiğimiz ilk 14 Şubatta yanında değilim belki ama kalbim hep seninle atıyor, hep de seninle atacak.", love: false },
+    { text: "Seni sevmeyi, senin tarafından sevilmeyi çok seviyorum. Çünkü sevmek ve sevilmek sen içinde olunca anlam buldu benim hayatımda. Seni tanıyıp, seni anladığım günden beri hayatımın geri kalanında senin olmadığın bir an olsun istemiyorum.", love: false },
+    { text: "Bütün hayallerimde, geleceğe dair umutla baktığım bütün günlerde sen varsın ve hepsi sen varsın diye güzel. Bu garip hayatımın anlamsızlıkları arasında açan bir çiçeksin benim için. Sessiz, sabırlı ve koşulsuz açan bir çiçek. Bütün zorluklara, bütün engellere rağmen asla solmayan bir çiçek.", love: false },
+    { text: "Seni ömrüm yettiğince, senin beni sevdiğin gibi, sessiz, sabırlı ve koşulsuz seveceğim seni. Umarım her sene buraya yeni anılarımızı koyabiliriz. Bizimle beraber büyütür, belki birgün çocuklarımıza gösteririz. Koskocaman bir iyi kisin benim için, onun için yazıya başladığım gibi bitirmek istedim.", love: false },
+    { text: "Seni çok seviyorum sevgilim,\nSaltuk", love: true }
+  ];
+
+  function runTypewriter(container, delayPerWord) {
+    if (!container) return;
+    container.innerHTML = '';
+    const tokens = [];
+    for (const p of modalParagraphs) {
+      const lines = p.text.split('\n');
+      for (let i = 0; i < lines.length; i++) {
+        if (i > 0) tokens.push({ type: 'br' });
+        const words = lines[i].split(/\s+/).filter(Boolean);
+        for (const w of words) tokens.push({ type: 'word', text: w });
+      }
+      tokens.push({ type: 'pEnd', love: p.love });
+    }
+
+    let currentP = null;
+    let delay = 0;
+    for (let i = 0; i < tokens.length; i++) {
+      const tok = tokens[i];
+      const next = tokens[i + 1];
+      if (tok.type === 'br') {
+        if (currentP) {
+          const targetP = currentP;
+          const br = document.createElement('br');
+          setTimeout(() => targetP.appendChild(br), delay);
+          delay += delayPerWord;
+        }
+      } else if (tok.type === 'word') {
+        if (!currentP) {
+          currentP = document.createElement('p');
+          container.appendChild(currentP);
+        }
+        const targetP = currentP;
+        const span = document.createElement('span');
+        span.className = 'modal-word';
+        span.textContent = tok.text;
+        const d = delay;
+        setTimeout(() => {
+          targetP.appendChild(span);
+          if (next && next.type === 'word') targetP.appendChild(document.createTextNode(' '));
+        }, d);
+        delay += delayPerWord;
+      } else if (tok.type === 'pEnd') {
+        if (currentP && tok.love) currentP.classList.add('modal-love');
+        currentP = null;
+      }
+    }
+  }
+
   function initModal() {
     const btn = document.getElementById('heart-btn');
     const modal = document.getElementById('surprise-modal');
     const overlay = document.getElementById('modal-overlay');
+    const modalText = document.getElementById('modal-text');
 
     if (!btn || !modal) return;
 
     const open = () => {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+      const video = document.getElementById('hero-video');
+      if (video) video.play().catch(() => {});
+      runTypewriter(modalText, 90);
     };
     const close = () => {
       modal.classList.remove('active');
       document.body.style.overflow = '';
+      if (modalText) modalText.innerHTML = '';
     };
 
     btn.addEventListener('click', open);
@@ -335,7 +396,7 @@
     }
   }
 
-  /* ===== MEDIA LOADING ===== */
+  /* ===== MEDIA LOADING & VIDEO KEEP PLAYING ===== */
   function initMediaLoading() {
     const video = document.getElementById('hero-video');
     const videoLoading = document.getElementById('video-loading');
@@ -343,6 +404,11 @@
       const hideVideoLoading = () => videoLoading.classList.add('hidden');
       if (video.readyState >= 3) hideVideoLoading();
       else video.addEventListener('canplay', hideVideoLoading);
+
+      video.addEventListener('ended', () => video.play());
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && video) video.play().catch(() => {});
+      });
     }
   }
 
